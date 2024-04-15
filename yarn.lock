@@ -1141,12 +1141,6 @@
   dependencies:
     "@types/mdx" "^2.0.0"
 
-"@mr-shoaib/ms-ui@https://github.com/MSMALIK11/ms-ui":
-  version "0.0.1"
-  resolved "git+ssh://git@github.com/MSMALIK11/ms-ui.git#ef733ae101645488143ad845d12593f7857a70c3"
-  dependencies:
-    "@rollup/plugin-image" "^3.0.3"
-
 "@ndelangen/get-tarball@^3.0.7":
   version "3.0.9"
   resolved "https://registry.npmjs.org/@ndelangen/get-tarball/-/get-tarball-3.0.9.tgz"

@@ -39,16 +39,14 @@ const Login: React.FC<LoginProps> = ({
         resolver: yupResolver(schema)
     });
 
-    const onSubmitHandler = (formData: UserProp, event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmitHandler = React.useCallback((formData: UserProp, event: React.FormEvent<HTMLFormElement>) => {
         // Call the onSubmit prop function with form data
         event.preventDefault()
         if (!formData.email && !formData.password) return
         if (onLogin) {
             onLogin(formData);
         }
-        reset();
-
-    };
+    }, []);
 
 
     return (
@@ -63,7 +61,7 @@ const Login: React.FC<LoginProps> = ({
             </div>
             <div id='login-right-content'>
                 <div id='login-right-box'>
-                    <form action='#' onSubmit={(event) => handleSubmit((formData) => onSubmitHandler(formData, event))} >
+                    <form action='#' onSubmit={handleSubmit(onSubmitHandler)} >
                         <h1 className='text-heading'>{loginPromptMessage}</h1>
                         <InputControl   {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />

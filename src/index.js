@@ -4307,16 +4307,17 @@ const Login = ({ onLogin, logo = img$1, bottomTitle = data.botomTitleDefault, lo
     const { register, handleSubmit, formState: { errors }, reset } = reactHookForm.useForm({
         resolver: o(schema)
     });
-    const onSubmitHandler = (formData) => {
+    const onSubmitHandler = React.useCallback((formData, event) => {
         // Call the onSubmit prop function with form data
+        event.preventDefault();
         if (!formData.email && !formData.password)
             return;
         if (onLogin) {
             onLogin(formData);
         }
         reset();
-    };
-    return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', children: [jsxRuntimeExports.jsx("img", { src: img, alt: "login-background" }), jsxRuntimeExports.jsx("div", { className: 'brand-logo', children: jsxRuntimeExports.jsx("img", { src: logo || img$1, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', children: jsxRuntimeExports.jsxs("form", { onSubmit: (e) => handleSubmit(onSubmitHandler(e)), children: [jsxRuntimeExports.jsx("h1", { className: 'text-heading ', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { type: 'submit', disabled: disabled, className: `bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`, children: submitText })] }) }) })] }));
+    }, []);
+    return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', children: [jsxRuntimeExports.jsx("img", { src: img, alt: "login-background" }), jsxRuntimeExports.jsx("div", { className: 'brand-logo', children: jsxRuntimeExports.jsx("img", { src: logo || img$1, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', children: jsxRuntimeExports.jsxs("form", { action: '#', onSubmit: handleSubmit(onSubmitHandler), children: [jsxRuntimeExports.jsx("h1", { className: 'text-heading', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { type: 'submit', disabled: disabled, className: `bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`, children: submitText })] }) }) })] }));
 };
 
 exports.Login = Login;
