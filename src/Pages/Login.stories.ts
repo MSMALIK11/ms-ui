@@ -7,13 +7,9 @@ const meta: Meta<typeof Login> = {
     component: Login,
 };
 
-export default meta; // Add a semicolon here
+export default meta;
 
 type Story = StoryObj<typeof meta>;
-
-// export const Primary: Story = {
-//     render: () => <Login />,
-// }; 
 export const Primary: Story = {
-    args: { variant: 'primary', children: 'Click Me' },
+    args: { submitText: 'Login Now' },
 };
