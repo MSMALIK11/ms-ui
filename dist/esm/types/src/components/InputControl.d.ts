@@ -1,5 +1,5 @@
-/// <reference types="react" />
+import React from 'react';
 import { EmailInputProp } from '../types';
-declare const InputControl: import("react").ForwardRefExoticComponent<EmailInputProp & import("react").RefAttributes<HTMLInputElement>>;
+declare const InputControl: React.ForwardRefExoticComponent<EmailInputProp & React.RefAttributes<HTMLInputElement>>;
 export default InputControl;
 //# sourceMappingURL=InputControl.d.ts.map

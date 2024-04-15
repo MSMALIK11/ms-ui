@@ -3,7 +3,7 @@ interface UserProp {
     password: string;
 }
 
-export interface LoginProps {
+interface LoginProps {
     onLogin?: (userData: UserProp) => void;
     logo?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -23,7 +23,7 @@ export interface LoginProps {
 
 }
 
-export interface PasswordnputProp {
+interface PasswordnputProp {
     label?: string;
     hintText?: string;
     name?: string;
@@ -32,7 +32,7 @@ export interface PasswordnputProp {
     passwordErrorMessage?: string;
 }
 
-export interface EmailInputProp {
+interface EmailInputProp {
     label?: string,
     hintText?: string,
     name?: string,
@@ -40,3 +40,5 @@ export interface EmailInputProp {
     emailErrorMesage?: string,
     errorVariant?: boolean
 }
+
+export type { EmailInputProp, LoginProps, PasswordnputProp };

@@ -1,3 +1,4 @@
+import React from 'react'
 import { forwardRef, ForwardedRef } from 'react'
 import { BiInfoCircle } from "react-icons/bi"
 import { EmailInputProp } from '../types'

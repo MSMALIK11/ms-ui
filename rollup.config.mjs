@@ -74,7 +74,7 @@ export default [
         external: ['react-icons', 'react-hook-form', 'yup'],
     },
     {
-        input: 'dist/esm/types/index.d.ts',
+        input: './src/types/index.d.ts',
         output: [{ file: 'dist/index.d.ts', format: 'esm' }],
         plugins: [dts()],
         external: [/\.css$/],

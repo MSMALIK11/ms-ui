@@ -41,6 +41,7 @@ const Login: React.FC<LoginProps> = ({
 
     const onSubmitHandler = (formData: UserProp) => {
         // Call the onSubmit prop function with form data
+
         if (!formData.email && !formData.password) return
         if (onLogin) {
             onLogin(formData);
@@ -48,6 +49,7 @@ const Login: React.FC<LoginProps> = ({
         reset();
 
     };
+
 
     return (
         <div id='login-wraper' className='flex items-center'>
@@ -60,7 +62,7 @@ const Login: React.FC<LoginProps> = ({
             </div>
             <div id='login-right-content' className='flex-1 h-screen'>
                 <div id='login-right-box' className='flex flex-col items-center justify-center h-screen'>
-                    <form onSubmit={handleSubmit(onSubmitHandler)} className='flex flex-col gap-4 mt-10'>
+                    <form onSubmit={(e) => handleSubmit(onSubmitHandler(e))} className='flex flex-col gap-4 mt-10'>
                         <h1 className='text-heading text-left text-[16px]'>{loginPromptMessage}</h1>
                         <InputControl   {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
