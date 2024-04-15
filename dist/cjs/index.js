@@ -4,23 +4,53 @@ var reactHookForm = require('react-hook-form');
 var yup = require('yup');
 
 function _interopNamespaceDefault(e) {
-	var n = Object.create(null);
-	if (e) {
-		Object.keys(e).forEach(function (k) {
-			if (k !== 'default') {
-				var d = Object.getOwnPropertyDescriptor(e, k);
-				Object.defineProperty(n, k, d.get ? d : {
-					enumerable: true,
-					get: function () { return e[k]; }
-				});
-			}
-		});
-	}
-	n.default = e;
-	return Object.freeze(n);
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () { return e[k]; }
+        });
+      }
+    });
+  }
+  n.default = e;
+  return Object.freeze(n);
 }
 
 var yup__namespace = /*#__PURE__*/_interopNamespaceDefault(yup);
+
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z$1 = "";
+styleInject(css_248z$1);
 
 function getDefaultExportFromCjs (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -4269,33 +4299,6 @@ var img$1 = "data:image/svg+xml,%3csvg width='107' height='24' viewBox='0 0 107 
 
 var img = "data:image/svg+xml,%3csvg width='720' height='1024' viewBox='0 0 720 1024' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg clip-path='url(%23clip0_94_9)'%3e%3crect width='720' height='1024' fill='%23D9D9D9'/%3e%3crect width='720' height='1024' fill='%230B1437'/%3e%3cg clip-path='url(%23clip1_94_9)'%3e%3cg filter='url(%23filter0_f_94_9)'%3e%3ccircle cx='189.5' cy='954.5' r='189.5' fill='%232D55FB'/%3e%3c/g%3e%3cg filter='url(%23filter1_f_94_9)'%3e%3ccircle cx='774.5' cy='53.5' r='189.5' fill='%232D55FB'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cfilter id='filter0_f_94_9' x='-550' y='215' width='1479' height='1479' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-opacity='0' result='BackgroundImageFix'/%3e%3cfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3e%3cfeGaussianBlur stdDeviation='275' result='effect1_foregroundBlur_94_9'/%3e%3c/filter%3e%3cfilter id='filter1_f_94_9' x='35' y='-686' width='1479' height='1479' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-opacity='0' result='BackgroundImageFix'/%3e%3cfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3e%3cfeGaussianBlur stdDeviation='275' result='effect1_foregroundBlur_94_9'/%3e%3c/filter%3e%3cclipPath id='clip0_94_9'%3e%3crect width='720' height='1024' fill='white'/%3e%3c/clipPath%3e%3cclipPath id='clip1_94_9'%3e%3crect width='720' height='1024' fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e";
 
-function styleInject(css, ref) {
-  if ( ref === void 0 ) ref = {};
-  var insertAt = ref.insertAt;
-
-  if (!css || typeof document === 'undefined') { return; }
-
-  var head = document.head || document.getElementsByTagName('head')[0];
-  var style = document.createElement('style');
-  style.type = 'text/css';
-
-  if (insertAt === 'top') {
-    if (head.firstChild) {
-      head.insertBefore(style, head.firstChild);
-    } else {
-      head.appendChild(style);
-    }
-  } else {
-    head.appendChild(style);
-  }
-
-  if (style.styleSheet) {
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-}
-
 var css_248z = "";
 styleInject(css_248z);
 
@@ -4319,5 +4322,5 @@ const Login = ({ onLogin, logo = img$1, bottomTitle = data.botomTitleDefault, lo
     return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', className: 'flex items-center', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', className: 'relative w-1/2 h-screen', children: [jsxRuntimeExports.jsx("img", { src: img, alt: "login-background", className: 'h-screen w-[100%]' }), jsxRuntimeExports.jsx("div", { className: 'brand-logo absolute top-12 left-12 w-[100%]', children: jsxRuntimeExports.jsx("img", { src: logo || img$1, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle absolute text-white bottom-[100px] italic left-12 lg:text-5xl md:text-4xl w-[80%]`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', className: 'flex-1 h-screen', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', className: 'flex flex-col items-center justify-center h-screen', children: jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit(onSubmitHandler), className: 'flex flex-col gap-4 mt-10', children: [jsxRuntimeExports.jsx("h1", { className: 'text-heading text-left text-[16px]', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { type: 'submit', disabled: disabled, className: `bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`, children: submitText })] }) }) })] }));
 };
 
-module.exports = Login;
+exports.Login = Login;
 //# sourceMappingURL=index.js.map

@@ -1,3 +1,2 @@
-
-import Login from "./Pages/Login";
-export default Login;
+import './index.css'
+export { default as Login } from './Pages/Login';
