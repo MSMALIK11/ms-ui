@@ -2,9 +2,9 @@ import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
-import postcss from 'rollup-plugin-postcss';
+import image from '@rollup/plugin-image';
+import css from 'rollup-plugin-css-only';
 import packageJson from './package.json' assert { type: 'json' };
-
 export default [
     {
         input: 'src/index.ts',
@@ -24,8 +24,10 @@ export default [
             resolve(),
             commonjs(),
             typescript({ tsconfig: './tsconfig.json', exclude: ['**/*.test.tsx', '**/*.test.ts', '**/*.stories.ts'] }),
-            postcss({ extensions: ['.css'], inject: true, extract: false }),
+            image(),
+            css()
         ],
+        external: ['react-icons', 'react-hook-form', 'yup'],
     },
     {
         input: 'dist/esm/types/index.d.ts',

@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/react-webpack5";
-
+import tailwindcss from 'tailwindcss';
 const config: StorybookConfig = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -10,9 +10,19 @@ const config: StorybookConfig = {
     "@chromatic-com/storybook",
     "@storybook/addon-interactions",
   ],
+
+
   framework: {
     name: "@storybook/react-webpack5",
-    options: {},
+    options: {
+      postcssLoaderOptions: {
+        implementation: require('postcss'),
+        plugins: [
+          tailwindcss('./tailwind.config.js'),
+          require('autoprefixer'),
+        ],
+      }
+    },
   },
   docs: {
     autodocs: "tag",
