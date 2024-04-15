@@ -4269,6 +4269,36 @@ var img$1 = "data:image/svg+xml,%3csvg width='107' height='24' viewBox='0 0 107 
 
 var img = "data:image/svg+xml,%3csvg width='720' height='1024' viewBox='0 0 720 1024' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg clip-path='url(%23clip0_94_9)'%3e%3crect width='720' height='1024' fill='%23D9D9D9'/%3e%3crect width='720' height='1024' fill='%230B1437'/%3e%3cg clip-path='url(%23clip1_94_9)'%3e%3cg filter='url(%23filter0_f_94_9)'%3e%3ccircle cx='189.5' cy='954.5' r='189.5' fill='%232D55FB'/%3e%3c/g%3e%3cg filter='url(%23filter1_f_94_9)'%3e%3ccircle cx='774.5' cy='53.5' r='189.5' fill='%232D55FB'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cfilter id='filter0_f_94_9' x='-550' y='215' width='1479' height='1479' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-opacity='0' result='BackgroundImageFix'/%3e%3cfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3e%3cfeGaussianBlur stdDeviation='275' result='effect1_foregroundBlur_94_9'/%3e%3c/filter%3e%3cfilter id='filter1_f_94_9' x='35' y='-686' width='1479' height='1479' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-opacity='0' result='BackgroundImageFix'/%3e%3cfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3e%3cfeGaussianBlur stdDeviation='275' result='effect1_foregroundBlur_94_9'/%3e%3c/filter%3e%3cclipPath id='clip0_94_9'%3e%3crect width='720' height='1024' fill='white'/%3e%3c/clipPath%3e%3cclipPath id='clip1_94_9'%3e%3crect width='720' height='1024' fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e";
 
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = "";
+styleInject(css_248z);
+
 const Login = ({ onLogin, logo = img$1, bottomTitle = data.botomTitleDefault, loginPromptMessage = data.loginPromptMessageDefault, disabled = false, emailLabel = data.emailLabelDefault, passwordLabel = data.passwordLabelDefault, errorVariant, submitText = data.submitTextDefault, emailMinLen = data.emailMinLen, emailMaxLen = data.emailMaxLen, passwordMinLen = data.passwordMinLen, passwordMaxLen = data.passwordMaxLen, emailErrorMessage = data.emailErrorMessage, bottomTitleClass }) => {
     const schema = yup__namespace.object().shape({
         email: yup__namespace.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),

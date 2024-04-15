@@ -4,6 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import image from '@rollup/plugin-image';
 import css from 'rollup-plugin-css-only';
+import postcss from 'rollup-plugin-postcss';
 import packageJson from './package.json' assert { type: 'json' };
 export default [
     {
@@ -25,7 +26,8 @@ export default [
             commonjs(),
             typescript({ tsconfig: './tsconfig.json', exclude: ['**/*.test.tsx', '**/*.test.ts', '**/*.stories.ts'] }),
             image(),
-            css()
+            css(),
+            postcss({ extensions: ['.css'], inject: true, extract: false }),
         ],
         external: ['react-icons', 'react-hook-form', 'yup'],
     },
