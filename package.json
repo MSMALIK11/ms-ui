@@ -8,7 +8,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "main": "dist/cjs/index.js",
+  "main": "src/index.js",
   "module": "dist/esm/index.js",
   "types": "src/types/index.d.ts",
   "style": "src/index.css",
