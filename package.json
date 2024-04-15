@@ -10,8 +10,8 @@
   },
   "main": "src/index.js",
   "module": "dist/esm/index.js",
-  "types": "src/types/index.d.ts",
-  "style": "src/index.css",
+  "types": "dist/types/index.d.ts",
+  "style": "dist/index.css",
   "files": [
     "dist/**/*"
   ],

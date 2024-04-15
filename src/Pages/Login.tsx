@@ -7,7 +7,7 @@ import InputControl from '../components/InputControl';
 import PasswordControl from '../components/PasswordControl';
 import { data } from '../data/data';
 import { brandLogo, loginBg } from '../assets/assets';
-import { LoginProps } from '../types';
+import type { LoginProps } from '../types';
 import '../index.css';
 interface UserProp {
     email: string;
@@ -35,7 +35,7 @@ const Login: React.FC<LoginProps> = ({
         email: yup.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
         password: yup.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
     });
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<UserProp>({
+    const { register, handleSubmit, formState: { errors } } = useForm<UserProp>({
         resolver: yupResolver(schema)
     });
 
@@ -44,7 +44,7 @@ const Login: React.FC<LoginProps> = ({
         event.preventDefault()
         if (!formData.email && !formData.password) return
         if (onLogin) {
-            onLogin(formData);
+            onLogin(formData, event);
         }
     }, []);
 

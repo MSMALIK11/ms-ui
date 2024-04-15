@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginProps } from '../types';
+import type { LoginProps } from '../types';
 import '../index.css';
 declare const Login: React.FC<LoginProps>;
 export default Login;
