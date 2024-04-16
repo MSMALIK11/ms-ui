@@ -62,7 +62,7 @@ const Login: React.FC<LoginProps> = ({
                         <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl    {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
-                        <button onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={`bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
+                        <button onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={` ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
                     </div>
                 </div>
             </div>
