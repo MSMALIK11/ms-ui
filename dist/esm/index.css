@@ -81,6 +81,7 @@ input:focus {
   bottom: 10%;
   margin: 0 20px;
   color: #fff;
+  font-size: 1.6rem;
 }
 
 .brand-logo {
@@ -122,24 +123,4 @@ form button {
   align-items: center;
   gap: 0.4rem;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

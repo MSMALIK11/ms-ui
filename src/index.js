@@ -1,5 +1,26 @@
-import { get, set, appendErrors, useForm } from 'react-hook-form';
-import * as yup from 'yup';
+'use strict';
+
+var reactHookForm = require('react-hook-form');
+var yup = require('yup');
+
+function _interopNamespaceDefault(e) {
+  var n = Object.create(null);
+  if (e) {
+    Object.keys(e).forEach(function (k) {
+      if (k !== 'default') {
+        var d = Object.getOwnPropertyDescriptor(e, k);
+        Object.defineProperty(n, k, d.get ? d : {
+          enumerable: true,
+          get: function () { return e[k]; }
+        });
+      }
+    });
+  }
+  n.default = e;
+  return Object.freeze(n);
+}
+
+var yup__namespace = /*#__PURE__*/_interopNamespaceDefault(yup);
 
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
@@ -4186,9 +4207,9 @@ if (process.env.NODE_ENV === 'production') {
 
 var jsxRuntimeExports = jsxRuntime.exports;
 
-var t=function(e,t,i){if(e&&"reportValidity"in e){var n=get(i,t);e.setCustomValidity(n&&n.message||""),e.reportValidity();}},i=function(r,e){var i=function(i){var n=e.fields[i];n&&n.ref&&"reportValidity"in n.ref?t(n.ref,i,r):n.refs&&n.refs.forEach(function(e){return t(e,i,r)});};for(var n in e.fields)i(n);},n=function(t,n){n.shouldUseNativeValidation&&i(t,n);var f={};for(var a in t){var s=get(n.fields,a),u=Object.assign(t[a]||{},{ref:s&&s.ref});if(o$1(n.names||Object.keys(t),a)){var c=Object.assign({},get(f,a));set(c,"root",u),set(f,a,c);}else set(f,a,u);}return f},o$1=function(r,e){return r.some(function(r){return r.startsWith(e+".")})};
+var t=function(e,t,i){if(e&&"reportValidity"in e){var n=reactHookForm.get(i,t);e.setCustomValidity(n&&n.message||""),e.reportValidity();}},i=function(r,e){var i=function(i){var n=e.fields[i];n&&n.ref&&"reportValidity"in n.ref?t(n.ref,i,r):n.refs&&n.refs.forEach(function(e){return t(e,i,r)});};for(var n in e.fields)i(n);},n=function(t,n){n.shouldUseNativeValidation&&i(t,n);var f={};for(var a in t){var s=reactHookForm.get(n.fields,a),u=Object.assign(t[a]||{},{ref:s&&s.ref});if(o$1(n.names||Object.keys(t),a)){var c=Object.assign({},reactHookForm.get(f,a));reactHookForm.set(c,"root",u),reactHookForm.set(f,a,c);}else reactHookForm.set(f,a,u);}return f},o$1=function(r,e){return r.some(function(r){return r.startsWith(e+".")})};
 
-function o(o,n$1,a){return void 0===n$1&&(n$1={}),void 0===a&&(a={}),function(s,i$1,c){try{return Promise.resolve(function(t,r){try{var u=(n$1.context&&"development"===process.env.NODE_ENV&&console.warn("You should not used the yup options context. Please, use the 'useForm' context object instead"),Promise.resolve(o["sync"===a.mode?"validateSync":"validate"](s,Object.assign({abortEarly:!1},n$1,{context:i$1}))).then(function(t){return c.shouldUseNativeValidation&&i({},c),{values:a.raw?s:t,errors:{}}}));}catch(e){return r(e)}return u&&u.then?u.then(void 0,r):u}(0,function(e){if(!e.inner)throw e;return {values:{},errors:n((o=e,n$1=!c.shouldUseNativeValidation&&"all"===c.criteriaMode,(o.inner||[]).reduce(function(e,t){if(e[t.path]||(e[t.path]={message:t.message,type:t.type}),n$1){var o=e[t.path].types,a=o&&o[t.type];e[t.path]=appendErrors(t.path,n$1,e,t.type,a?[].concat(a,t.message):t.message);}return e},{})),c)};var o,n$1;}))}catch(e){return Promise.reject(e)}}}
+function o(o,n$1,a){return void 0===n$1&&(n$1={}),void 0===a&&(a={}),function(s,i$1,c){try{return Promise.resolve(function(t,r){try{var u=(n$1.context&&"development"===process.env.NODE_ENV&&console.warn("You should not used the yup options context. Please, use the 'useForm' context object instead"),Promise.resolve(o["sync"===a.mode?"validateSync":"validate"](s,Object.assign({abortEarly:!1},n$1,{context:i$1}))).then(function(t){return c.shouldUseNativeValidation&&i({},c),{values:a.raw?s:t,errors:{}}}));}catch(e){return r(e)}return u&&u.then?u.then(void 0,r):u}(0,function(e){if(!e.inner)throw e;return {values:{},errors:n((o=e,n$1=!c.shouldUseNativeValidation&&"all"===c.criteriaMode,(o.inner||[]).reduce(function(e,t){if(e[t.path]||(e[t.path]={message:t.message,type:t.type}),n$1){var o=e[t.path].types,a=o&&o[t.type];e[t.path]=reactHookForm.appendErrors(t.path,n$1,e,t.type,a?[].concat(a,t.message):t.message);}return e},{})),c)};var o,n$1;}))}catch(e){return Promise.reject(e)}}}
 
 var DefaultContext = {
   color: undefined,
@@ -4279,11 +4300,11 @@ var img$1 = "data:image/svg+xml,%3csvg width='107' height='24' viewBox='0 0 107 
 var img = "data:image/svg+xml,%3csvg width='720' height='1024' viewBox='0 0 720 1024' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cg clip-path='url(%23clip0_94_9)'%3e%3crect width='720' height='1024' fill='%23D9D9D9'/%3e%3crect width='720' height='1024' fill='%230B1437'/%3e%3cg clip-path='url(%23clip1_94_9)'%3e%3cg filter='url(%23filter0_f_94_9)'%3e%3ccircle cx='189.5' cy='954.5' r='189.5' fill='%232D55FB'/%3e%3c/g%3e%3cg filter='url(%23filter1_f_94_9)'%3e%3ccircle cx='774.5' cy='53.5' r='189.5' fill='%232D55FB'/%3e%3c/g%3e%3c/g%3e%3c/g%3e%3cdefs%3e%3cfilter id='filter0_f_94_9' x='-550' y='215' width='1479' height='1479' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-opacity='0' result='BackgroundImageFix'/%3e%3cfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3e%3cfeGaussianBlur stdDeviation='275' result='effect1_foregroundBlur_94_9'/%3e%3c/filter%3e%3cfilter id='filter1_f_94_9' x='35' y='-686' width='1479' height='1479' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3e%3cfeFlood flood-opacity='0' result='BackgroundImageFix'/%3e%3cfeBlend mode='normal' in='SourceGraphic' in2='BackgroundImageFix' result='shape'/%3e%3cfeGaussianBlur stdDeviation='275' result='effect1_foregroundBlur_94_9'/%3e%3c/filter%3e%3cclipPath id='clip0_94_9'%3e%3crect width='720' height='1024' fill='white'/%3e%3c/clipPath%3e%3cclipPath id='clip1_94_9'%3e%3crect width='720' height='1024' fill='white'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e";
 
 const Login = ({ onLogin, logo = img$1, bottomTitle = data.botomTitleDefault, loginPromptMessage = data.loginPromptMessageDefault, disabled = false, emailLabel = data.emailLabelDefault, passwordLabel = data.passwordLabelDefault, errorVariant, submitText = data.submitTextDefault, emailMinLen = data.emailMinLen, emailMaxLen = data.emailMaxLen, passwordMinLen = data.passwordMinLen, passwordMaxLen = data.passwordMaxLen, emailErrorMessage = data.emailErrorMessage, bottomTitleClass }) => {
-    const schema = yup.object().shape({
-        email: yup.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
-        password: yup.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
+    const schema = yup__namespace.object().shape({
+        email: yup__namespace.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
+        password: yup__namespace.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
     });
-    const { register, handleSubmit, formState: { errors } } = useForm({
+    const { register, handleSubmit, formState: { errors } } = reactHookForm.useForm({
         resolver: o(schema)
     });
     const onSubmitHandler = React.useCallback((formData, event) => {
@@ -4298,5 +4319,5 @@ const Login = ({ onLogin, logo = img$1, bottomTitle = data.botomTitleDefault, lo
     return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', children: [jsxRuntimeExports.jsx("img", { src: img, alt: "login-background" }), jsxRuntimeExports.jsx("div", { className: 'brand-logo', children: jsxRuntimeExports.jsx("img", { src: logo || img$1, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', children: jsxRuntimeExports.jsxs("form", { onSubmit: handleSubmit(onSubmitHandler), children: [jsxRuntimeExports.jsx("h1", { className: 'text-heading', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { type: 'submit', disabled: disabled, className: `bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`, children: submitText })] }) }) })] }));
 };
 
-export { Login };
+exports.Login = Login;
 //# sourceMappingURL=index.js.map

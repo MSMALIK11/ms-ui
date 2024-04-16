@@ -4,7 +4,7 @@ interface UserProp {
 }
 
 interface LoginProps {
-    onLogin?: (userData: UserProp) => void;
+    onLogin?: (userData: UserProp, event: React.FormEvent<HTMLFormElement>) => void;
     logo?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     bottomTitle?: string;
