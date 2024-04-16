@@ -58,11 +58,11 @@ const Login: React.FC<LoginProps> = ({
             </div>
             <div id='login-right-content'>
                 <div id='login-right-box'>
-                    <div className='form'>
+                    <div className='login-form'>
                         <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl    {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
-                        <button onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={` ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
+                        <button id='login-button' onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={` ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
                     </div>
                 </div>
             </div>
