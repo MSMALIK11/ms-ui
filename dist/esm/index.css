@@ -83,7 +83,7 @@ color: var(--text-color);
   position: absolute;
   bottom: 10%;
   margin: 0 20px;
-  color: var(--text-color);
+  color: #fff;
   font-size: 3vw;
   margin-bottom: 10px;
 }
@@ -135,5 +135,6 @@ color: var(--text-color);
   align-items: center;
   gap: 0.4rem;
 }
+
 
 

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -23,18 +23,14 @@ const Login: React.FC<LoginProps> = ({
     passwordLabel = data.passwordLabelDefault,
     errorVariant,
     submitText = data.submitTextDefault,
-    emailMinLen = data.emailMinLen,
-    emailMaxLen = data.emailMaxLen,
-    passwordMinLen = data.passwordMinLen,
     passwordMaxLen = data.passwordMaxLen,
-    emailErrorMessage = data.emailErrorMessage,
     bottomTitleClass
 
 }: LoginProps) => {
 
     const schema = yup.object().shape({
-        email: yup.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
-        password: yup.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
+        email: yup.string().required("Email is required"),
+        password: yup.string().required("Password is required").max(passwordMaxLen),
     });
     const { register, handleSubmit, formState: { errors } } = useForm<UserProp>({
         resolver: yupResolver(schema)
