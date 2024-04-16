@@ -35,24 +35,26 @@ const Login: React.FC<LoginProps> = ({
         email: yup.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
         password: yup.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
     });
-    const { register, handleSubmit, formState: { errors } } = useForm<UserProp>({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<UserProp>({
         resolver: yupResolver(schema)
     });
 
-    const onSubmitHandler = React.useCallback((formData: UserProp, event: React.FormEvent<HTMLFormElement>) => {
+    const onSubmitHandler = React.useCallback((formData: UserProp, event: any) => {
         // Call the onSubmit prop function with form data
         console.log('event', event, formData)
+        event.preventDefault()
         event.isDefaultPrevented()
         if (!formData.email && !formData.password) return
         if (onLogin) {
             onLogin(formData, event);
         }
+
+
     }, []);
 
 
     return (
         <div id='login-wraper'>
-
             <div id='login-left-content'>
                 <img src={loginBg} alt="login-background" />
                 <div className='brand-logo'>
@@ -62,7 +64,7 @@ const Login: React.FC<LoginProps> = ({
             </div>
             <div id='login-right-content'>
                 <div id='login-right-box'>
-                    <form onSubmit={handleSubmit(onSubmitHandler)} >
+                    <form action='#' onSubmit={handleSubmit(onSubmitHandler)} >
                         <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl   {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />

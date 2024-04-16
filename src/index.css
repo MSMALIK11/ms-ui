@@ -37,13 +37,14 @@ background-color: white;
   display: flex;
   flex: 1;
 background-color: #fff;
+margin: 0 20px;
 }
 .login-title{
 font-size: 16px;
 font-weight: 400;
 color: var(--text-color);
 }
-input {
+#login-wraper  input {
   outline: none;
   padding: 0px 12px;
   border: 1px solid var(--border-color);
@@ -52,18 +53,18 @@ input {
   height: 3rem;
   box-sizing: border-box;
 }
-::placeholder{
+#login-wraper ::placeholder{
   color: var(--placeholder-color);
 }
-input:focus {
+#login-wraper  input:focus {
   border: 3px solid var(--input-focus);
 }
 
-.input-box {
+#login-wraper  .input-box {
   position: relative;
   width: 100%;
 }
-.input-wraper {
+#login-wraper  .input-wraper {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -75,6 +76,7 @@ input:focus {
 .input-wraper label {
   color: var(--label-color);
   font-size: 16px;
+  margin-bottom: 5px;
 }
 .bottomTitle {
   position: absolute;
@@ -94,14 +96,14 @@ input:focus {
   margin: 0 auto;
 }
 
-form {
+#login-wraper  form {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin:0 auto;
   width: 400px; 
 }
-form button {
+#login-wraper  form button {
   width: 100%;
   background-color: var(--background);
   height: 48px;
@@ -112,16 +114,18 @@ form button {
   cursor: pointer;
   margin-top: 8px;
 }
-.error-message {
+#login-wraper  .error-message {
   display: flex;
   justify-content: flex-end;
 }
-.error-message p {
+#login-wraper  .error-message p {
   color: #dc2626;
   font-size: 0.875rem;
   display: flex;
   align-items: center;
   gap: 0.4rem;
 }
+
+
 
 
