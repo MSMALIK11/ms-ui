@@ -30,13 +30,13 @@ const Login: React.FC<LoginProps> = ({
     emailErrorMessage = data.emailErrorMessage,
     bottomTitleClass
 
-}) => {
+}: LoginProps) => {
 
     const schema = yup.object().shape({
         email: yup.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
         password: yup.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
     });
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<UserProp>({
+    const { register, handleSubmit, formState: { errors } } = useForm<UserProp>({
         resolver: yupResolver(schema)
     });
 
@@ -58,12 +58,12 @@ const Login: React.FC<LoginProps> = ({
             </div>
             <div id='login-right-content'>
                 <div id='login-right-box'>
-                    <form>
+                    <div className='form'>
                         <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl    {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
                         <button onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={`bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div >
