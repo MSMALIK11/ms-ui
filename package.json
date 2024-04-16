@@ -82,6 +82,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
+    "@mr-shoaib/ms-ui": "github:MSMALIK11/ms-ui",
     "@rollup/plugin-image": "^3.0.3",
     "@storybook/addon-postcss": "^2.0.0",
     "react-hook-form": "^7.51.2",

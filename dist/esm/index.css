@@ -38,7 +38,7 @@ background-color: white;
   flex: 1;
 background-color: #fff;
 }
-.text-heading{
+.login-title{
 font-size: 16px;
 font-weight: 400;
 color: var(--text-color);
@@ -123,4 +123,5 @@ form button {
   align-items: center;
   gap: 0.4rem;
 }
+
 

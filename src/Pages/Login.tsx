@@ -41,7 +41,8 @@ const Login: React.FC<LoginProps> = ({
 
     const onSubmitHandler = React.useCallback((formData: UserProp, event: React.FormEvent<HTMLFormElement>) => {
         // Call the onSubmit prop function with form data
-        event.preventDefault()
+        console.log('event', event, formData)
+        event.isDefaultPrevented()
         if (!formData.email && !formData.password) return
         if (onLogin) {
             onLogin(formData, event);
@@ -62,7 +63,7 @@ const Login: React.FC<LoginProps> = ({
             <div id='login-right-content'>
                 <div id='login-right-box'>
                     <form onSubmit={handleSubmit(onSubmitHandler)} >
-                        <h1 className='text-heading'>{loginPromptMessage}</h1>
+                        <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl   {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
                         <button type='submit' disabled={disabled} className={`bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
