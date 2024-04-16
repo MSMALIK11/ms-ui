@@ -1,6 +1,7 @@
 'use strict';
 
 var reactHookForm = require('react-hook-form');
+var resolvers = require('@hookform/resolvers');
 var yup = require('yup');
 
 function _interopNamespaceDefault(e) {
@@ -4207,9 +4208,7 @@ if (process.env.NODE_ENV === 'production') {
 
 var jsxRuntimeExports = jsxRuntime.exports;
 
-var t=function(e,t,i){if(e&&"reportValidity"in e){var n=reactHookForm.get(i,t);e.setCustomValidity(n&&n.message||""),e.reportValidity();}},i=function(r,e){var i=function(i){var n=e.fields[i];n&&n.ref&&"reportValidity"in n.ref?t(n.ref,i,r):n.refs&&n.refs.forEach(function(e){return t(e,i,r)});};for(var n in e.fields)i(n);},n=function(t,n){n.shouldUseNativeValidation&&i(t,n);var f={};for(var a in t){var s=reactHookForm.get(n.fields,a),u=Object.assign(t[a]||{},{ref:s&&s.ref});if(o$1(n.names||Object.keys(t),a)){var c=Object.assign({},reactHookForm.get(f,a));reactHookForm.set(c,"root",u),reactHookForm.set(f,a,c);}else reactHookForm.set(f,a,u);}return f},o$1=function(r,e){return r.some(function(r){return r.startsWith(e+".")})};
-
-function o(o,n$1,a){return void 0===n$1&&(n$1={}),void 0===a&&(a={}),function(s,i$1,c){try{return Promise.resolve(function(t,r){try{var u=(n$1.context&&"development"===process.env.NODE_ENV&&console.warn("You should not used the yup options context. Please, use the 'useForm' context object instead"),Promise.resolve(o["sync"===a.mode?"validateSync":"validate"](s,Object.assign({abortEarly:!1},n$1,{context:i$1}))).then(function(t){return c.shouldUseNativeValidation&&i({},c),{values:a.raw?s:t,errors:{}}}));}catch(e){return r(e)}return u&&u.then?u.then(void 0,r):u}(0,function(e){if(!e.inner)throw e;return {values:{},errors:n((o=e,n$1=!c.shouldUseNativeValidation&&"all"===c.criteriaMode,(o.inner||[]).reduce(function(e,t){if(e[t.path]||(e[t.path]={message:t.message,type:t.type}),n$1){var o=e[t.path].types,a=o&&o[t.type];e[t.path]=reactHookForm.appendErrors(t.path,n$1,e,t.type,a?[].concat(a,t.message):t.message);}return e},{})),c)};var o,n$1;}))}catch(e){return Promise.reject(e)}}}
+function o(o,n,a){return void 0===n&&(n={}),void 0===a&&(a={}),function(s,i,c){try{return Promise.resolve(function(t,r){try{var u=(n.context&&"development"===process.env.NODE_ENV&&console.warn("You should not used the yup options context. Please, use the 'useForm' context object instead"),Promise.resolve(o["sync"===a.mode?"validateSync":"validate"](s,Object.assign({abortEarly:!1},n,{context:i}))).then(function(t){return c.shouldUseNativeValidation&&resolvers.validateFieldsNatively({},c),{values:a.raw?s:t,errors:{}}}));}catch(e){return r(e)}return u&&u.then?u.then(void 0,r):u}(0,function(e){if(!e.inner)throw e;return {values:{},errors:resolvers.toNestErrors((o=e,n=!c.shouldUseNativeValidation&&"all"===c.criteriaMode,(o.inner||[]).reduce(function(e,t){if(e[t.path]||(e[t.path]={message:t.message,type:t.type}),n){var o=e[t.path].types,a=o&&o[t.type];e[t.path]=reactHookForm.appendErrors(t.path,n,e,t.type,a?[].concat(a,t.message):t.message);}return e},{})),c)};var o,n;}))}catch(e){return Promise.reject(e)}}}
 
 var DefaultContext = {
   color: undefined,
@@ -4307,18 +4306,14 @@ const Login = ({ onLogin, logo = img$1, bottomTitle = data.botomTitleDefault, lo
     const { register, handleSubmit, formState: { errors }, reset } = reactHookForm.useForm({
         resolver: o(schema)
     });
-    const onSubmitHandler = React.useCallback((formData, event) => {
-        // Call the onSubmit prop function with form data
-        console.log('event', event, formData);
-        event.preventDefault();
-        event.isDefaultPrevented();
+    const onFormSubmitClick = (formData) => {
         if (!formData.email && !formData.password)
             return;
         if (onLogin) {
-            onLogin(formData, event);
+            onLogin(formData);
         }
-    }, []);
-    return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', children: [jsxRuntimeExports.jsx("img", { src: img, alt: "login-background" }), jsxRuntimeExports.jsx("div", { className: 'brand-logo', children: jsxRuntimeExports.jsx("img", { src: logo || img$1, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', children: jsxRuntimeExports.jsxs("form", { action: '#', onSubmit: handleSubmit(onSubmitHandler), children: [jsxRuntimeExports.jsx("h1", { className: 'login-title', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { type: 'submit', disabled: disabled, className: `bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`, children: submitText })] }) }) })] }));
+    };
+    return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', children: [jsxRuntimeExports.jsx("img", { src: img, alt: "login-background" }), jsxRuntimeExports.jsx("div", { className: 'brand-logo', children: jsxRuntimeExports.jsx("img", { src: logo || img$1, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', children: jsxRuntimeExports.jsxs("form", { children: [jsxRuntimeExports.jsx("h1", { className: 'login-title', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { onClick: handleSubmit(onFormSubmitClick), disabled: disabled, className: `bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`, children: submitText })] }) }) })] }));
 };
 
 exports.Login = Login;

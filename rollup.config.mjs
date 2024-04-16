@@ -30,7 +30,7 @@ export default [
             css({ output: 'index.css' }),
             postcss({ extensions: ['.css'], inject: true, extract: false }),
         ],
-        external: ['react-icons', 'react-hook-form', 'yup'],
+        external: ['react-icons', 'react-hook-form', 'yup', '@hookform/resolvers'],
     },
     {
         input: './src/types/index.d.ts',

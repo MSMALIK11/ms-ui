@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -31,6 +31,7 @@ const Login: React.FC<LoginProps> = ({
     bottomTitleClass
 
 }) => {
+
     const schema = yup.object().shape({
         email: yup.string().required("Email is required").min(emailMinLen).max(emailMaxLen).email(emailErrorMessage),
         password: yup.string().required("Password is required").min(passwordMinLen).max(passwordMaxLen),
@@ -39,19 +40,12 @@ const Login: React.FC<LoginProps> = ({
         resolver: yupResolver(schema)
     });
 
-    const onSubmitHandler = React.useCallback((formData: UserProp, event: any) => {
-        // Call the onSubmit prop function with form data
-        console.log('event', event, formData)
-        event.preventDefault()
-        event.isDefaultPrevented()
+    const onFormSubmitClick = (formData: UserProp) => {
         if (!formData.email && !formData.password) return
         if (onLogin) {
-            onLogin(formData, event);
+            onLogin(formData);
         }
-
-
-    }, []);
-
+    }
 
     return (
         <div id='login-wraper'>
@@ -64,11 +58,11 @@ const Login: React.FC<LoginProps> = ({
             </div>
             <div id='login-right-content'>
                 <div id='login-right-box'>
-                    <form action='#' onSubmit={handleSubmit(onSubmitHandler)} >
+                    <form>
                         <h1 className='login-title'>{loginPromptMessage}</h1>
-                        <InputControl   {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
+                        <InputControl    {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
-                        <button type='submit' disabled={disabled} className={`bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
+                        <button onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={`bg-brand mt-4 shadow-sm cursor-pointer ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
                     </form>
                 </div>
             </div>
