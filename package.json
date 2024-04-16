@@ -1,6 +1,6 @@
 {
-  "name": "@mr-shoaib/ms-ui",
-  "version": "0.0.4",
+  "name": "@liberin/login",
+  "version": "0.0.5",
   "description": "ui library for building reusable and flexible  component",
   "scripts": {
     "dev": "rollup -c --watch",
@@ -40,16 +40,8 @@
   "resolutions": {
     "string-width": "4.2.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MSMALIK11/ms-ui.git"
-  },
-  "author": "MR SHOAIB",
+  "author": "Liberin Technologies",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/MSMALIK11/ms-ui/issues"
-  },
-  "homepage": "https://github.com/MSMALIK11/ms-ui#readme",
   "postcss": {
     "plugins": {
       "postcss-import": {}

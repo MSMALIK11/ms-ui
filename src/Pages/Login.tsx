@@ -17,6 +17,7 @@ const Login: React.FC<LoginProps> = ({
     onLogin,
     logo = brandLogo,
     bottomTitle = data.botomTitleDefault,
+    bottomTitleClass,
     loginPromptMessage = data.loginPromptMessageDefault,
     disabled = false,
     emailLabel = data.emailLabelDefault,
@@ -24,10 +25,10 @@ const Login: React.FC<LoginProps> = ({
     errorVariant,
     submitText = data.submitTextDefault,
     passwordMaxLen = data.passwordMaxLen,
-    bottomTitleClass
+    btnClass,
+    logoClass
 
 }: LoginProps) => {
-
     const schema = yup.object().shape({
         email: yup.string().required("Email is required"),
         password: yup.string().required("Password is required").max(passwordMaxLen),
@@ -35,7 +36,6 @@ const Login: React.FC<LoginProps> = ({
     const { register, handleSubmit, formState: { errors } } = useForm<UserProp>({
         resolver: yupResolver(schema)
     });
-
     const onFormSubmitClick = (formData: UserProp) => {
         if (!formData.email && !formData.password) return
         if (onLogin) {
@@ -47,7 +47,7 @@ const Login: React.FC<LoginProps> = ({
         <div id='login-wraper'>
             <div id='login-left-content'>
                 <img src={loginBg} alt="login-background" />
-                <div className='brand-logo'>
+                <div className={`brand-logo ${logoClass}`}>
                     <img src={logo || brandLogo} alt="brand-logo" />
                 </div>
                 <h1 className={`${bottomTitleClass} bottomTitle`}>{bottomTitle}</h1>
@@ -58,7 +58,7 @@ const Login: React.FC<LoginProps> = ({
                         <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl    {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
-                        <button id='login-button' onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={` ${disabled ? 'bg-brand/50 cursor-not-allowed' : 'hover:bg-brand'} text-white rounded-lg h-12 transition-all duration-300`}>{submitText}</button>
+                        <button id='login-button' onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={`${btnClass} ${disabled ? 'bg-brand/50 cursor-not-allowed disabled' : 'hover:bg-brand'}`}>{submitText}</button>
                     </div>
                 </div>
             </div>

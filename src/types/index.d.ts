@@ -8,6 +8,7 @@ export interface LoginProps {
     logo?: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     bottomTitle?: string;
+    bottomTitleClass?: string;
     loginPromptMessage?: string;
     disabled?: boolean;
     emailLabel?: string;
@@ -19,7 +20,8 @@ export interface LoginProps {
     emailMinLen?: number,
     emailMaxLen?: number,
     emailErrorMessage?: string,
-    bottomTitleClass?: string
+    btnClass?: string,
+    logoClass?: string
 
 }
 

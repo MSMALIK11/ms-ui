@@ -41,9 +41,10 @@ background-color: #fff;
 margin: 0 20px;
 }
 #login-wraper .login-title{
-font-size: 16px;
+font-size: 1rem;
 font-weight: 400;
 color: var(--text-color);
+font-family: "Roboto", sans-serif;
 }
 #login-wraper  input {
   outline: none;
@@ -56,6 +57,8 @@ color: var(--text-color);
 }
 #login-wraper ::placeholder{
   color: var(--placeholder-color);
+font-size: 1rem;
+font-family: "Roboto", sans-serif;
 }
 #login-wraper  input:focus {
   border: 3px solid var(--input-focus);
@@ -135,6 +138,7 @@ color: var(--text-color);
   align-items: center;
   gap: 0.4rem;
 }
+
 
 
 
