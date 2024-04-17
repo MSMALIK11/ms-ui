@@ -1,3 +1,2 @@
 import './index.css'
-import LoginComponent from './Pages/Login'
-export default LoginComponent
+export { default as Login } from './Pages/Login';

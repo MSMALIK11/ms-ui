@@ -6,7 +6,7 @@ import * as yup from "yup";
 import InputControl from '../components/InputControl';
 import PasswordControl from '../components/PasswordControl';
 import { data } from '../data/data';
-import { brandLogo, loginBg } from '../assets/assets';
+import { brandLogo, loginBg, loader } from '../assets/assets';
 import type { LoginProps } from '../types';
 import '../index.css';
 interface UserProp {
@@ -26,7 +26,8 @@ const Login: React.FC<LoginProps> = ({
     submitText = data.submitTextDefault,
     passwordMaxLen = data.passwordMaxLen,
     btnClass,
-    logoClass
+    logoClass,
+    isLoading
 
 }: LoginProps) => {
     const schema = yup.object().shape({
@@ -58,7 +59,9 @@ const Login: React.FC<LoginProps> = ({
                         <h1 className='login-title'>{loginPromptMessage}</h1>
                         <InputControl    {...register('email')} emailErrorMesage={errors?.email?.message} errorVariant={errorVariant} name={"email"} label={emailLabel} hintText='Enter Your Email' />
                         <PasswordControl maxLength={20} {...register('password')} passwordErrorMessage={errors?.password?.message} errorVariant={errorVariant} name={"password"} label={passwordLabel} hintText='Enter Your Password' />
-                        <button id='login-button' onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={`${btnClass} ${disabled ? 'bg-brand/50 cursor-not-allowed disabled' : 'hover:bg-brand'}`}>{submitText}</button>
+                        <button id='login-button' onClick={handleSubmit(onFormSubmitClick)} disabled={disabled} className={`${btnClass} ${disabled ? 'bg-brand/50 cursor-not-allowed disabled' : 'hover:bg-brand'}`}>
+                            {isLoading ? <img src={loader} alt="loader" /> : submitText}
+                        </button>
                     </div>
                 </div>
             </div>

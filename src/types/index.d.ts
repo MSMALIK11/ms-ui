@@ -21,7 +21,8 @@ export interface LoginProps {
     emailMaxLen?: number,
     emailErrorMessage?: string,
     btnClass?: string,
-    logoClass?: string
+    logoClass?: string,
+    isLoading?: boolean
 
 }
 

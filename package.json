@@ -1,6 +1,6 @@
 {
   "name": "@liberin/login",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "ui library for building reusable and flexible  component",
   "scripts": {
     "dev": "rollup -c --watch",
