@@ -43,3 +43,6 @@ export interface EmailInputProp {
     emailErrorMesage?: string,
     errorVariant?: boolean
 }
+export interface Login {
+    Login: React.JSX.Element
+}

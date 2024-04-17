@@ -4318,5 +4318,7 @@ const Login = ({ onLogin, logo = img$2, bottomTitle = data.botomTitleDefault, bo
     return (jsxRuntimeExports.jsxs("div", { id: 'login-wraper', children: [jsxRuntimeExports.jsxs("div", { id: 'login-left-content', children: [jsxRuntimeExports.jsx("img", { src: img$1, alt: "login-background" }), jsxRuntimeExports.jsx("div", { className: `brand-logo ${logoClass}`, children: jsxRuntimeExports.jsx("img", { src: logo || img$2, alt: "brand-logo" }) }), jsxRuntimeExports.jsx("h1", { className: `${bottomTitleClass} bottomTitle`, children: bottomTitle })] }), jsxRuntimeExports.jsx("div", { id: 'login-right-content', children: jsxRuntimeExports.jsx("div", { id: 'login-right-box', children: jsxRuntimeExports.jsxs("div", { className: 'login-form', children: [jsxRuntimeExports.jsx("h1", { className: 'login-title', children: loginPromptMessage }), jsxRuntimeExports.jsx(InputControl, { ...register('email'), emailErrorMesage: errors?.email?.message, errorVariant: errorVariant, name: "email", label: emailLabel, hintText: 'Enter Your Email' }), jsxRuntimeExports.jsx(PasswordControl, { maxLength: 20, ...register('password'), passwordErrorMessage: errors?.password?.message, errorVariant: errorVariant, name: "password", label: passwordLabel, hintText: 'Enter Your Password' }), jsxRuntimeExports.jsx("button", { id: 'login-button', onClick: handleSubmit(onFormSubmitClick), disabled: disabled, className: `${btnClass} ${disabled ? 'bg-brand/50 cursor-not-allowed disabled' : 'hover:bg-brand'}`, children: isLoading ? jsxRuntimeExports.jsx("img", { src: img, alt: "loader" }) : submitText })] }) }) })] }));
 };
 
-exports.Login = Login;
+// export { default as Login } from './Pages/Login';
+
+module.exports = Login;
 //# sourceMappingURL=index.js.map
